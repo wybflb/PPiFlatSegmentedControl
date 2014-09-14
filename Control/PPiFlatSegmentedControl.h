@@ -13,17 +13,6 @@ typedef void(^selectionBlock)(NSUInteger segmentIndex);
 
 @interface PPiFlatSegmentedControl : UIControl
 
-/**
- *	PROPERTIES
- * textFont: Font of text inside segments
- * textColor: Color of text inside segments
- * selectedTextColor: Color of text inside segments ( selected state )
- * color: Background color of full segmentControl
- * selectedColor: Background color for segment in selected state
- * borderWidth: Width of the border line around segments and control
- * borderColor: Color "" ""
- */
-
 @property (nonatomic,strong) UIColor *selectedColor;
 @property (nonatomic,strong) UIColor *color;
 @property (nonatomic,strong) UIFont *textFont;
@@ -34,11 +23,14 @@ typedef void(^selectionBlock)(NSUInteger segmentIndex);
 @property (nonatomic)  IconPosition iconPosition;
 @property (nonatomic,readonly) NSUInteger numberOfSegments;
 
-- (id)initWithFrame:(CGRect)frame items:(NSArray*)items iconPosition:(IconPosition)position andSelectionBlock:(selectionBlock)block iconSeparation:(CGFloat)separation;
+- (id)initWithFrame:(CGRect)frame
+              items:(NSArray*)items
+       iconPosition:(IconPosition)position
+  andSelectionBlock:(selectionBlock)block
+     iconSeparation:(CGFloat)separation;
 -(void)setEnabled:(BOOL)enabled forSegmentAtIndex:(NSUInteger)segment;
--(BOOL)isEnabledForSegmentAtIndex:(NSUInteger)index;
+-(BOOL)isSelectedSegmentAtIndex:(NSUInteger)index;
 -(void)setTitle:(id)title forSegmentAtIndex:(NSUInteger)index;
 -(void)setSelectedTextAttributes:(NSDictionary*)attributes;
-
 
 @end
