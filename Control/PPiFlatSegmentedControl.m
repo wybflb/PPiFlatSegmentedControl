@@ -20,7 +20,11 @@
 
 @implementation PPiFlatSegmentedControl
 
-- (id)initWithFrame:(CGRect)frame items:(NSArray*)items iconPosition:(IconPosition)position andSelectionBlock:(selectionBlock)block iconSeparation:(CGFloat)separation
+- (id)initWithFrame:(CGRect)frame
+              items:(NSArray*)items
+       iconPosition:(IconPosition)position
+  andSelectionBlock:(selectionBlock)block
+     iconSeparation:(CGFloat)separation
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -30,49 +34,75 @@
         //Icon separation
         self.iconSeparation = separation;
         
+        //Icon position
+        self.iconPosition = position;
+        
+        //Adding items
+        [self addItems:items withFrame:frame];
+        
         //Background Color
         self.backgroundColor=[UIColor clearColor];
         
-        //Generating segments
-        float buttonWith=round(frame.size.width / items.count);
-        int i=0;
-        for(NSDictionary *item in items){
-            NSString *text=item[@"text"];
-            NSObject *icon=item[@"icon"];
-            
-            UIAwesomeButton  *button;
-            if([icon isKindOfClass:[UIImage class]]) {
-                button = [[UIAwesomeButton alloc] initWithFrame:CGRectMake(buttonWith*i, 0, buttonWith, frame.size.height) text:text iconImage:(UIImage *)icon attributes:@{} andIconPosition:position];
-            }
-            else {
-                button = [[UIAwesomeButton alloc] initWithFrame:CGRectMake(buttonWith*i, 0, buttonWith, frame.size.height) text:text icon:(NSString *)icon attributes:@{} andIconPosition:position];
-            }
-            
-            UIAwesomeButton __weak *wbutton = button;
-            [button setActionBlock:^{
-                [self segmentSelected:wbutton];
-            }];
-            
-            //Adding to self view
-            [self.segments addObject:button];
-            [self addSubview:button];
-            
-            
-            //Adding separator
-            if(i!=0){
-                UIView *separatorView=[[UIView alloc] initWithFrame:CGRectMake(i*buttonWith, 0, self.borderWidth, frame.size.height)];
-                [self addSubview:separatorView];
-                [self.separators addObject:separatorView];
-            }
-            i++;
-        }
         //Applying corners
         self.layer.masksToBounds=YES;
         self.layer.cornerRadius=segment_corner;
+        
         //Default selected 0
         _currentSelected=0;
     }
     return self;
+}
+
+- (void)addItems:(NSArray*)items withFrame:(CGRect)frame
+{
+    // Removing segments and separators
+    for (UIView *separator in self.separators) {
+        [separator removeFromSuperview];
+    }
+    [self.separators removeAllObjects];
+    for (UIView *segment in self.segments) {
+        [segment removeFromSuperview];
+    }
+    [self.segments removeAllObjects];
+    
+    //Generating segments
+    float buttonWith=ceil(frame.size.width / items.count);
+    int i=0;
+    for(PPiFlatSegmentItem *item in items){
+        NSString *text=item.title;
+        NSObject *icon=item.icon;
+        
+        UIAwesomeButton  *button;
+        if([icon isKindOfClass:[UIImage class]]) {
+            button = [[UIAwesomeButton alloc] initWithFrame:CGRectMake(buttonWith*i, 0, buttonWith, frame.size.height) text:text iconImage:(UIImage *)icon attributes:@{} andIconPosition:self.iconPosition];
+        }
+        else {
+            button = [[UIAwesomeButton alloc] initWithFrame:CGRectMake(buttonWith*i, 0, buttonWith, frame.size.height) text:text icon:(NSString *)icon attributes:@{} andIconPosition:self.iconPosition];
+        }
+        
+        UIAwesomeButton __weak *wbutton = button;
+        [button setActionBlock:^{
+            [self segmentSelected:wbutton];
+        }];
+        
+        //Adding to self view
+        [self.segments addObject:button];
+        [self addSubview:button];
+        
+        //Adding separator
+        if(i!=0){
+            UIView *separatorView=[[UIView alloc] initWithFrame:CGRectMake(i*buttonWith, 0, self.borderWidth, frame.size.height)];
+            [self addSubview:separatorView];
+            [self.separators addObject:separatorView];
+        }
+        
+        i++;
+    }
+    
+    // Bringins separators to the front
+    for (UIView* separator in self.separators) {
+        [self bringSubviewToFront:separator];
+    }
 }
 
 
@@ -163,6 +193,12 @@
                 [segment setAttributes:self.textAttributes forUIControlState:UIControlStateNormal];
         }
     }
+}
+
+- (void)setItems:(NSArray*)items
+{
+    [self addItems:items withFrame:self.frame];
+    [self updateSegmentsFormat];
 }
 
 -(void)setSelectedColor:(UIColor *)selectedColor

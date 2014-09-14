@@ -21,6 +21,7 @@
 		3D2E5C0417B93ABC00D839AB /* PPiFlatSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E5C0317B93ABC00D839AB /* PPiFlatSegmentedControl.m */; };
 		3D3A158017B94FDE004C044F /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D3A157F17B94FDE004C044F /* fontawesome-webfont.ttf */; };
 		3DDAD74417B949AA008C9AEA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DDAD74317B949AA008C9AEA /* QuartzCore.framework */; };
+		3DF5734319C6220F0048B395 /* PPiFlatSegmentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF5734219C6220F0048B395 /* PPiFlatSegmentItem.m */; };
 		AFD9EFA6133948748D10F2DE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DFD36B0C8994CE9B32D958C /* libPods.a */; };
 		B749E7309C6B9A68A764A38F /* eye@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B749E3EF83421F1C79A2B094 /* eye@2x.png */; };
 		B749EDE528B7F8B1AFE6006C /* eye.png in Resources */ = {isa = PBXBuildFile; fileRef = B749E64532B8A0A976C2CCA4 /* eye.png */; };
@@ -49,6 +50,8 @@
 		3D2E5C0317B93ABC00D839AB /* PPiFlatSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPiFlatSegmentedControl.m; sourceTree = "<group>"; };
 		3D3A157F17B94FDE004C044F /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		3DDAD74317B949AA008C9AEA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3DF5734119C6220F0048B395 /* PPiFlatSegmentItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPiFlatSegmentItem.h; sourceTree = "<group>"; };
+		3DF5734219C6220F0048B395 /* PPiFlatSegmentItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPiFlatSegmentItem.m; sourceTree = "<group>"; };
 		B749E3EF83421F1C79A2B094 /* eye@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eye@2x.png"; sourceTree = "<group>"; };
 		B749E64532B8A0A976C2CCA4 /* eye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,6 +137,8 @@
 				3D3A157F17B94FDE004C044F /* fontawesome-webfont.ttf */,
 				3D2E5C0217B93ABC00D839AB /* PPiFlatSegmentedControl.h */,
 				3D2E5C0317B93ABC00D839AB /* PPiFlatSegmentedControl.m */,
+				3DF5734119C6220F0048B395 /* PPiFlatSegmentItem.h */,
+				3DF5734219C6220F0048B395 /* PPiFlatSegmentItem.m */,
 			);
 			name = Control;
 			path = ../../Control;
@@ -255,6 +260,7 @@
 				3D2E5BEB17B93AAC00D839AB /* main.m in Sources */,
 				3D2E5BEF17B93AAC00D839AB /* AppDelegate.m in Sources */,
 				3D2E5BFB17B93AAC00D839AB /* ViewController.m in Sources */,
+				3DF5734319C6220F0048B395 /* PPiFlatSegmentItem.m in Sources */,
 				3D2E5C0417B93ABC00D839AB /* PPiFlatSegmentedControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
