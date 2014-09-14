@@ -69,25 +69,6 @@
     segmented3.selectedTextAttributes=@{NSFontAttributeName:[UIFont systemFontOfSize:13],
                                        NSForegroundColorAttributeName:[UIColor whiteColor]};
     [self.view addSubview:segmented3];
-
-    PPiFlatSegmentedControl *segmented4=[[PPiFlatSegmentedControl alloc] initWithFrame:CGRectMake(20, 200, 200, 30) items:@[               @{@"text":@"225",@"icon":[UIImage imageNamed:@"eye"]},
-                                         @{@"text":@"23",@"icon":[UIImage imageNamed:@"eye"]}
-                                         ]
-                                                                          iconPosition:IconPositionRight andSelectionBlock:^(NSUInteger segmentIndex) {
-
-                                                                          } iconSeparation:5];
-    segmented4.color=[UIColor colorWithRed:88.0f/255.0 green:88.0f/255.0 blue:88.0f/255.0 alpha:1];
-    segmented4.borderWidth=0.5;
-    segmented4.borderColor=[UIColor darkGrayColor];
-    segmented4.selectedColor=[UIColor colorWithRed:0.0f/255.0 green:141.0f/255.0 blue:176.0f/255.0 alpha:1];
-    segmented4.textAttributes=@{NSFontAttributeName:[UIFont systemFontOfSize:17],
-                               NSForegroundColorAttributeName:[UIColor whiteColor]};
-    segmented4.selectedTextAttributes=@{NSFontAttributeName:[UIFont systemFontOfSize:17],
-                                       NSForegroundColorAttributeName:[UIColor whiteColor]};
-    [self.view addSubview:segmented4];
-
-
-
 }
 
 - (void)didReceiveMemoryWarning
