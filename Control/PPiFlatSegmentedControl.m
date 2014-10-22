@@ -81,7 +81,7 @@
         }
         
         UIAwesomeButton __weak *wbutton = button;
-        [button setActionBlock:^{
+        [button setActionBlock:^(UIAwesomeButton *button) {
             [self segmentSelected:wbutton];
         }];
         
